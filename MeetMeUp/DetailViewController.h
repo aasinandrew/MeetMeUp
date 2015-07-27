@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DetailViewController.h
 //  MeetMeUp
 //
 //  Created by Andrew  Nguyen on 7/27/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@interface DetailViewController : UIViewController
+@property NSDictionary *dictionary;
+@property NSDictionary *subDictionary;
 
 @end
-

@@ -14,6 +14,10 @@
 		BB758EB31B66C3FB00FD9A68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB758EB21B66C3FB00FD9A68 /* Images.xcassets */; };
 		BB758EB61B66C3FB00FD9A68 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB758EB41B66C3FB00FD9A68 /* LaunchScreen.xib */; };
 		BB758EC21B66C3FB00FD9A68 /* MeetMeUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758EC11B66C3FB00FD9A68 /* MeetMeUpTests.m */; };
+		BB758ECD1B66CF2100FD9A68 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ECC1B66CF2100FD9A68 /* DetailViewController.m */; };
+		BB758ED01B66DB9900FD9A68 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ECF1B66DB9900FD9A68 /* WebViewController.m */; };
+		BB758ED31B66E79600FD9A68 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ED21B66E79600FD9A68 /* CommentsViewController.m */; };
+		BB758ED61B66F36C00FD9A68 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ED51B66F36C00FD9A68 /* MemberViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,14 @@
 		BB758EBB1B66C3FB00FD9A68 /* MeetMeUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetMeUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB758EC01B66C3FB00FD9A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB758EC11B66C3FB00FD9A68 /* MeetMeUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetMeUpTests.m; sourceTree = "<group>"; };
+		BB758ECB1B66CF2100FD9A68 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BB758ECC1B66CF2100FD9A68 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BB758ECE1B66DB9900FD9A68 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		BB758ECF1B66DB9900FD9A68 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		BB758ED11B66E79600FD9A68 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		BB758ED21B66E79600FD9A68 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		BB758ED41B66F36C00FD9A68 /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
+		BB758ED51B66F36C00FD9A68 /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,14 @@
 				BB758EAC1B66C3FA00FD9A68 /* ViewController.h */,
 				BB758EAD1B66C3FA00FD9A68 /* ViewController.m */,
 				BB758EAF1B66C3FA00FD9A68 /* Main.storyboard */,
+				BB758ED41B66F36C00FD9A68 /* MemberViewController.h */,
+				BB758ED51B66F36C00FD9A68 /* MemberViewController.m */,
+				BB758ED11B66E79600FD9A68 /* CommentsViewController.h */,
+				BB758ED21B66E79600FD9A68 /* CommentsViewController.m */,
+				BB758ECE1B66DB9900FD9A68 /* WebViewController.h */,
+				BB758ECF1B66DB9900FD9A68 /* WebViewController.m */,
+				BB758ECB1B66CF2100FD9A68 /* DetailViewController.h */,
+				BB758ECC1B66CF2100FD9A68 /* DetailViewController.m */,
 				BB758EB21B66C3FB00FD9A68 /* Images.xcassets */,
 				BB758EB41B66C3FB00FD9A68 /* LaunchScreen.xib */,
 				BB758EA51B66C3FA00FD9A68 /* Supporting Files */,
@@ -220,8 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB758EAE1B66C3FA00FD9A68 /* ViewController.m in Sources */,
+				BB758ED01B66DB9900FD9A68 /* WebViewController.m in Sources */,
+				BB758ED31B66E79600FD9A68 /* CommentsViewController.m in Sources */,
 				BB758EAB1B66C3FA00FD9A68 /* AppDelegate.m in Sources */,
 				BB758EA81B66C3FA00FD9A68 /* main.m in Sources */,
+				BB758ECD1B66CF2100FD9A68 /* DetailViewController.m in Sources */,
+				BB758ED61B66F36C00FD9A68 /* MemberViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +306,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -325,7 +349,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

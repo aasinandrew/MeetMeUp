@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WebViewController.h
 //  MeetMeUp
 //
 //  Created by Andrew  Nguyen on 7/27/15.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@interface WebViewController : UIViewController
+@property NSString *url;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
-
