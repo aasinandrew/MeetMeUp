@@ -9,8 +9,8 @@
 #import "MemberViewController.h"
 
 @interface MemberViewController ()
-@property NSDictionary *dictionary;
-@property NSArray *array;
+@property NSDictionary *JSONdictionary;
+@property NSArray *resultArray;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
@@ -21,13 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self getMember];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)getMember {
@@ -37,26 +31,22 @@
     NSString *secondPart = @"&key=6d784d3f65707058127e51273520155c";
 
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", firstPart, self.memberID, secondPart]];
-    NSString *urlstring = [url absoluteString];
-    NSLog(urlstring);
 
     [[[NSURLSession sharedSession]dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.array = [self.dictionary objectForKey:@"results"];
-        NSDictionary * sub = [self.array objectAtIndex:0];
-        self.nameLabel.text = [sub objectForKey:@"name"];
-        self.cityLabel.text = [sub objectForKey:@"city"];
+        self.JSONdictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.resultArray = [self.JSONdictionary objectForKey:@"results"];
+        NSDictionary *member = [self.resultArray objectAtIndex:0];
+        self.nameLabel.text = [member objectForKey:@"name"];
+        self.cityLabel.text = [member objectForKey:@"city"];
 
-        NSDictionary *photosub = [sub objectForKey:@"photo"];
-        NSURL *photourl = [NSURL URLWithString:photosub[@"photo_link"]];
+        NSDictionary *photo = [member objectForKey:@"photo"];
+        NSURL *photourl = [NSURL URLWithString:photo[@"photo_link"]];
 
         self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photourl]];
 
-        self.title = [sub objectForKey:@"name"];
+        self.title = [member objectForKey:@"name"];
 
     }]resume];
-
-
 }
 
 @end

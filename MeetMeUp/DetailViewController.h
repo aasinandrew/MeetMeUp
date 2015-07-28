@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
-@property NSDictionary *dictionary;
-@property NSDictionary *subDictionary;
+@property NSDictionary *event;
 
 @end

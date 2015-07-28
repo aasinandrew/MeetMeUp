@@ -13,9 +13,8 @@
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hostingInfo;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 @property NSString *eventID;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -23,35 +22,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   self.title = [self.dictionary objectForKey:@"name"];
-    NSInteger rsvpCount = [[self.dictionary objectForKey:@"yes_rsvp_count"] integerValue];
-    self.countLabel.text = [NSString stringWithFormat:@"%ld", (long)rsvpCount];
+    self.title = [self.event objectForKey:@"name"];
+    NSInteger rsvpCount = [[self.event objectForKey:@"yes_rsvp_count"] integerValue];
+    self.countLabel.text = [NSString stringWithFormat:@"RSVP Count: %ld", (long)rsvpCount];
 
 
-    NSMutableAttributedString *text = [[NSMutableAttributedString alloc]initWithString:[self.dictionary objectForKey:@"description"]];
-    self.textView.attributedText = text;
-
-    NSDictionary *groupDictionary = [self.dictionary objectForKey:@"group"];
+    NSString *descriptionText = [self.event objectForKey:@"description"];
+    NSDictionary *groupDictionary = [self.event objectForKey:@"group"];
     self.hostingInfo.text = [groupDictionary objectForKey:@"name"];
 
-    self.eventID = [self.dictionary objectForKey:@"id"];
+    self.eventID = [self.event objectForKey:@"id"];
 
-}
+    [self.webView loadHTMLString:[descriptionText description] baseURL:nil];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)onWebPageButtonPressed:(UIButton *)sender {
 
     WebViewController *ivc = [self.storyboard instantiateViewControllerWithIdentifier:@"WebView"];
 
-    ivc.url = [self.dictionary objectForKey:@"event_url"];
+    ivc.url = [self.event objectForKey:@"event_url"];
 
     [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:ivc animated:YES];
-
-    
 
 }
 

@@ -10,10 +10,8 @@
 #import "DetailViewController.h"
 
 @interface ViewController () <UITextFieldDelegate>
-@property NSDictionary *meetUp;
-@property NSArray *eventsArray;
-@property NSDictionary *dictionary;
-@property NSDictionary *subDictionary;
+@property NSDictionary *JSONdictionary;
+@property NSArray *resultEventsArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property NSString *searchTerm;
@@ -46,8 +44,8 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", firstPart, searchTerm, secondPart]];
 
     [[[NSURLSession sharedSession]dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.meetUp = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.eventsArray = [self.meetUp objectForKey:@"results"];
+        self.JSONdictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.resultEventsArray = [self.JSONdictionary objectForKey:@"results"];
         [self.tableView reloadData];
     }]resume];
 
@@ -56,32 +54,34 @@
 -(void)getDataFromMeetUp {
     NSURL *url = [NSURL URLWithString:@"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=6d784d3f65707058127e51273520155c"];
     [[[NSURLSession sharedSession]dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.meetUp = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.eventsArray = [self.meetUp objectForKey:@"results"];
+        self.JSONdictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        self.resultEventsArray = [self.JSONdictionary objectForKey:@"results"];
         [self.tableView reloadData];
     }]resume];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.eventsArray.count;
+    return self.resultEventsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MeetUpCell"];
-    self.dictionary = [self.eventsArray objectAtIndex:indexPath.row];
-    self.subDictionary = [self.dictionary objectForKey:@"venue"];
-    cell.textLabel.text = [self.dictionary objectForKey:@"name"];
-    cell.detailTextLabel.text = [self.subDictionary objectForKey:@"address_1"];
+
+    NSDictionary *event = [self.resultEventsArray objectAtIndex:indexPath.row];
+    NSDictionary *venue = [event objectForKey:@"venue"];
+
+    NSString *address = [venue objectForKey:@"address_1"];
+    NSString *city = [venue objectForKey:@"city"];
+
+    cell.textLabel.text = [event objectForKey:@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", address, city];
     return cell;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     DetailViewController *dVC = segue.destinationViewController;
-    NSDictionary *dictionary = [self.eventsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    //dVC.title = self.tableView c
-    //[self.dictionary objectForKey:@"name"];
-    dVC.dictionary = dictionary;
-    //dVC.subDictionary = self.dictionary;
+    NSDictionary *event = [self.resultEventsArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    dVC.event = event;
 }
 
 
