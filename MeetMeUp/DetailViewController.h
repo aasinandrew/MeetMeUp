@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
 
 @interface DetailViewController : UIViewController
-@property NSDictionary *event;
+@property Event *event;
 
 @end

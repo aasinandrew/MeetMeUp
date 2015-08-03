@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (strong, nonatomic) Member *member;
 
 @end
 
@@ -21,32 +22,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getMember];
+
+
+    [Member retrieveMember:self.memberID withCompletion:^(Member *member) {
+        self.member = member;
+
+        [self.nameLabel performSelectorOnMainThread:@selector(setText:) withObject:self.member.name waitUntilDone:NO];
+        [self.imageView performSelectorOnMainThread:@selector(setImage:) withObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.member.photoUrl]]] waitUntilDone:NO];
+    }];
 }
 
--(void)getMember {
+//- (void)setMember:(Member *)member {
+//    _member = member;
+//
+//}
 
 
-    NSString *firstPart = @"https://api.meetup.com/2/members.json?member_id=";
-    NSString *secondPart = @"&key=6d784d3f65707058127e51273520155c";
+//- (void)displayMemberInfo {
+    //NSDictionary *member = [self.resultArray objectAtIndex:0];
+    //self.nameLabel.text = [member objectForKey:@"name"];
+    //self.cityLabel.text = [member objectForKey:@"city"];
 
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", firstPart, self.memberID, secondPart]];
+    //NSDictionary *photo = [member objectForKey:@"photo"];
+    //NSURL *photourl = [NSURL URLWithString:photo[@"photo_link"]];
 
-    [[[NSURLSession sharedSession]dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.JSONdictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.resultArray = [self.JSONdictionary objectForKey:@"results"];
-        NSDictionary *member = [self.resultArray objectAtIndex:0];
-        self.nameLabel.text = [member objectForKey:@"name"];
-        self.cityLabel.text = [member objectForKey:@"city"];
+    //self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photourl]];
 
-        NSDictionary *photo = [member objectForKey:@"photo"];
-        NSURL *photourl = [NSURL URLWithString:photo[@"photo_link"]];
+    //self.title = [member objectForKey:@"name"];
+//}
 
-        self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photourl]];
 
-        self.title = [member objectForKey:@"name"];
-
-    }]resume];
-}
 
 @end
+

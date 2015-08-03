@@ -18,6 +18,9 @@
 		BB758ED01B66DB9900FD9A68 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ECF1B66DB9900FD9A68 /* WebViewController.m */; };
 		BB758ED31B66E79600FD9A68 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ED21B66E79600FD9A68 /* CommentsViewController.m */; };
 		BB758ED61B66F36C00FD9A68 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB758ED51B66F36C00FD9A68 /* MemberViewController.m */; };
+		BBEDBFA11B6FFFF400B9B7CA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDBFA01B6FFFF400B9B7CA /* Event.m */; };
+		BBEDBFA41B7016E500B9B7CA /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDBFA31B7016E500B9B7CA /* Member.m */; };
+		BBEDBFA81B701C8700B9B7CA /* Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDBFA71B701C8700B9B7CA /* Comments.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,12 @@
 		BB758ED21B66E79600FD9A68 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		BB758ED41B66F36C00FD9A68 /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		BB758ED51B66F36C00FD9A68 /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
+		BBEDBF9F1B6FFFF400B9B7CA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		BBEDBFA01B6FFFF400B9B7CA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		BBEDBFA21B7016E500B9B7CA /* Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		BBEDBFA31B7016E500B9B7CA /* Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		BBEDBFA61B701C8700B9B7CA /* Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comments.h; sourceTree = "<group>"; };
+		BBEDBFA71B701C8700B9B7CA /* Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comments.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +106,7 @@
 				BB758EAA1B66C3FA00FD9A68 /* AppDelegate.m */,
 				BB758EAC1B66C3FA00FD9A68 /* ViewController.h */,
 				BB758EAD1B66C3FA00FD9A68 /* ViewController.m */,
+				BBEDBFA51B7016EE00B9B7CA /* Model */,
 				BB758EAF1B66C3FA00FD9A68 /* Main.storyboard */,
 				BB758ED41B66F36C00FD9A68 /* MemberViewController.h */,
 				BB758ED51B66F36C00FD9A68 /* MemberViewController.m */,
@@ -137,6 +147,19 @@
 				BB758EC01B66C3FB00FD9A68 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBEDBFA51B7016EE00B9B7CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBEDBFA21B7016E500B9B7CA /* Member.h */,
+				BBEDBFA31B7016E500B9B7CA /* Member.m */,
+				BBEDBF9F1B6FFFF400B9B7CA /* Event.h */,
+				BBEDBFA01B6FFFF400B9B7CA /* Event.m */,
+				BBEDBFA61B701C8700B9B7CA /* Comments.h */,
+				BBEDBFA71B701C8700B9B7CA /* Comments.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +265,12 @@
 				BB758EAE1B66C3FA00FD9A68 /* ViewController.m in Sources */,
 				BB758ED01B66DB9900FD9A68 /* WebViewController.m in Sources */,
 				BB758ED31B66E79600FD9A68 /* CommentsViewController.m in Sources */,
+				BBEDBFA81B701C8700B9B7CA /* Comments.m in Sources */,
 				BB758EAB1B66C3FA00FD9A68 /* AppDelegate.m in Sources */,
+				BBEDBFA11B6FFFF400B9B7CA /* Event.m in Sources */,
 				BB758EA81B66C3FA00FD9A68 /* main.m in Sources */,
 				BB758ECD1B66CF2100FD9A68 /* DetailViewController.m in Sources */,
+				BBEDBFA41B7016E500B9B7CA /* Member.m in Sources */,
 				BB758ED61B66F36C00FD9A68 /* MemberViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +466,7 @@
 				BB758EC71B66C3FB00FD9A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB758EC81B66C3FB00FD9A68 /* Build configuration list for PBXNativeTarget "MeetMeUpTests" */ = {
 			isa = XCConfigurationList;
@@ -448,6 +475,7 @@
 				BB758ECA1B66C3FB00FD9A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

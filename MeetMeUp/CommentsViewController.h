@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Event.h"
+#import "Comments.h"
 
 @interface CommentsViewController : UIViewController
-@property NSString *eventID;
+@property Event *event;
 
 @end

@@ -12,6 +12,7 @@
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property NSDictionary *JSONdictionary;
 @property NSArray *resultArray;
+@property (nonatomic, strong)  NSMutableArray *comments;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -21,41 +22,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Comments";
-    [self getComments];
+    [Comments getCommentsWithEventID:self.event.eventID withCompletion:^(NSMutableArray *comments) {
+        self.comments = comments;
+    }];
+
 }
 
--(void)getComments {
-
-
-    NSString *firstPart = @"https://api.meetup.com/2/event_comments.json?event_id=";
-    NSString *secondPart = @"&key=6d784d3f65707058127e51273520155c";
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", firstPart, self.eventID, secondPart]];
-
-    [[[NSURLSession sharedSession]dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        self.JSONdictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        self.resultArray = [self.JSONdictionary objectForKey:@"results"];
-        [self.tableView reloadData];
-    }]resume];
+- (void)setComments:(NSMutableArray *)comments {
+    _comments = comments;
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.resultArray.count;
+    return self.comments.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentsCell"];
-    NSDictionary *eventComment = [self.resultArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [eventComment objectForKey:@"member_name"];
-    cell.detailTextLabel.text = [eventComment objectForKey:@"comment"];
+     Comments *comment = [self.comments objectAtIndex:indexPath.row];
+    cell.textLabel.text = comment.name;
+    cell.detailTextLabel.text = comment.comment;
     return cell;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     MemberViewController *mVC = segue.destinationViewController;
-    NSDictionary *eventComment = [self.resultArray objectAtIndex:[self.tableView indexPathForSelectedRow].row];
-    NSInteger memberID = [[eventComment objectForKey:@"member_id"] integerValue];
-    NSString *memberIDString = [NSString stringWithFormat:@"%ld", memberID];
-    mVC.memberID = memberIDString;
+    Comments *comment = [self.comments objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+    mVC.memberID = comment.memberID;
     
 }
 
