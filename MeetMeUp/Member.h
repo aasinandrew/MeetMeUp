@@ -11,8 +11,9 @@
 @interface Member : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *photoUrl;
+@property (nonatomic, strong) NSString *city;
 
--(instancetype)initWithName:(NSString *)name photo:(NSString *)url;
+-(instancetype)initWithName:(NSString *)name photo:(NSString *)url city:(NSString *)city;
 +(void)retrieveMember:(NSString *)memberID withCompletion:(void(^)(Member *member))complete;
 
 @end

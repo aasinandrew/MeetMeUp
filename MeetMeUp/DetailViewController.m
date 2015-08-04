@@ -22,41 +22,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.title = self.event.name;
-
-    //NSInteger rsvpCount = [[self.event objectForKey:@"yes_rsvp_count"] integerValue];
     self.countLabel.text = [NSString stringWithFormat:@"RSVP Count: %d", self.event.rsvpCount];
-
+    self.hostingInfo.text = self.event.groupName;
+    self.eventID = self.event.eventID;
 
     NSString *descriptionText = self.event.eventDescription;
-//    NSDictionary *groupDictionary = [self.event objectForKey:@"group"];
-    self.hostingInfo.text = self.event.groupName;
-//
-    self.eventID = self.event.eventID;
-//
     [self.webView loadHTMLString:[descriptionText description] baseURL:nil];
 
 }
 
-- (IBAction)onWebPageButtonPressed:(UIButton *)sender {
-
-    WebViewController *ivc = [self.storyboard instantiateViewControllerWithIdentifier:@"WebView"];
-
-    ivc.url = self.event.url;
-
-    [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:ivc animated:YES];
-
-}
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    CommentsViewController *cVC = segue.destinationViewController;
-    cVC.event = self.event;
+    if ([segue.identifier isEqualToString:@"WebPage"]) {
+        WebViewController *wVC = segue.destinationViewController;
+        wVC.url = self.event.url;
+    }
+    else {
+        CommentsViewController *cVC = segue.destinationViewController;
+        cVC.event = self.event;
+    }
 }
-
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    CommentsViewController *cVC = segue.destinationViewController;
-//    cVC.event = self.event;
-//}
-
 
 @end

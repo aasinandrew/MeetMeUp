@@ -10,8 +10,6 @@
 #import "MemberViewController.h"
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
-@property NSDictionary *JSONdictionary;
-@property NSArray *resultArray;
 @property (nonatomic, strong)  NSMutableArray *comments;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -42,6 +40,7 @@
      Comments *comment = [self.comments objectAtIndex:indexPath.row];
     cell.textLabel.text = comment.name;
     cell.detailTextLabel.text = comment.comment;
+    cell.detailTextLabel.numberOfLines = 2;
     return cell;
 }
 

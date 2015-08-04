@@ -104,18 +104,9 @@
 			children = (
 				BB758EA91B66C3FA00FD9A68 /* AppDelegate.h */,
 				BB758EAA1B66C3FA00FD9A68 /* AppDelegate.m */,
-				BB758EAC1B66C3FA00FD9A68 /* ViewController.h */,
-				BB758EAD1B66C3FA00FD9A68 /* ViewController.m */,
+				BBEDBFA91B7034DF00B9B7CA /* ViewControllers */,
 				BBEDBFA51B7016EE00B9B7CA /* Model */,
 				BB758EAF1B66C3FA00FD9A68 /* Main.storyboard */,
-				BB758ED41B66F36C00FD9A68 /* MemberViewController.h */,
-				BB758ED51B66F36C00FD9A68 /* MemberViewController.m */,
-				BB758ED11B66E79600FD9A68 /* CommentsViewController.h */,
-				BB758ED21B66E79600FD9A68 /* CommentsViewController.m */,
-				BB758ECE1B66DB9900FD9A68 /* WebViewController.h */,
-				BB758ECF1B66DB9900FD9A68 /* WebViewController.m */,
-				BB758ECB1B66CF2100FD9A68 /* DetailViewController.h */,
-				BB758ECC1B66CF2100FD9A68 /* DetailViewController.m */,
 				BB758EB21B66C3FB00FD9A68 /* Images.xcassets */,
 				BB758EB41B66C3FB00FD9A68 /* LaunchScreen.xib */,
 				BB758EA51B66C3FA00FD9A68 /* Supporting Files */,
@@ -160,6 +151,23 @@
 				BBEDBFA71B701C8700B9B7CA /* Comments.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		BBEDBFA91B7034DF00B9B7CA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB758ED41B66F36C00FD9A68 /* MemberViewController.h */,
+				BB758ED51B66F36C00FD9A68 /* MemberViewController.m */,
+				BB758ED11B66E79600FD9A68 /* CommentsViewController.h */,
+				BB758ED21B66E79600FD9A68 /* CommentsViewController.m */,
+				BB758ECE1B66DB9900FD9A68 /* WebViewController.h */,
+				BB758ECF1B66DB9900FD9A68 /* WebViewController.m */,
+				BB758ECB1B66CF2100FD9A68 /* DetailViewController.h */,
+				BB758ECC1B66CF2100FD9A68 /* DetailViewController.m */,
+				BB758EAC1B66C3FA00FD9A68 /* ViewController.h */,
+				BB758EAD1B66C3FA00FD9A68 /* ViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

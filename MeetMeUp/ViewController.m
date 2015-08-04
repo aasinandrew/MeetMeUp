@@ -10,12 +10,10 @@
 #import "DetailViewController.h"
 #import "Event.h"
 
-@interface ViewController () <UITextFieldDelegate>
-@property NSDictionary *JSONdictionary;
+@interface ViewController () <UITextFieldDelegate, UISearchBarDelegate>
+
 @property (strong, nonatomic) NSArray *resultEventsArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-@property NSString *searchTerm;
 
 @end
 
@@ -27,27 +25,20 @@
         self.resultEventsArray = events;
     }];
 
-    self.searchTerm = @"";
 }
-
 
 - (void)setResultEventsArray:(NSArray *)resultEventsArray {
     _resultEventsArray = resultEventsArray;
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-
-    self.searchTerm = self.textField.text;
-    [Event retrieveFilteredEvent:self.searchTerm WithCompletion:^(NSMutableArray *events) {
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [Event retrieveFilteredEvent:searchBar.text WithCompletion:^(NSMutableArray *events) {
         self.resultEventsArray = events;
     }];
 
-    [textField resignFirstResponder];
-    return NO;
+    [searchBar resignFirstResponder];
 }
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.resultEventsArray.count;

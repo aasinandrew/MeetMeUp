@@ -10,10 +10,11 @@
 
 @implementation Member
 
--(instancetype)initWithName:(NSString *)name photo:(NSString *)url {
+-(instancetype)initWithName:(NSString *)name photo:(NSString *)url city:(NSString *)city {
     if (self = [super init]) {
         _name = [name copy];
         _photoUrl = [url copy];
+        _city = [city copy];
     }
     return self;
 }
@@ -32,12 +33,14 @@
         Member *m = [Member new];
         for (NSDictionary *d in member) {
             if ([d objectForKey:@"name"]) {
-                //Member *m = [[Member alloc]initWithName:[d objectForKey:@"name"] ];
                 m.name = [d objectForKey:@"name"];
             }
             if ([d objectForKey:@"photo"]) {
                 NSDictionary *dict = [d objectForKey:@"photo"];
                 m.photoUrl = [dict objectForKey:@"photo_link"];
+            }
+            if ([d objectForKey:@"city"]) {
+                m.city = [d objectForKey:@"city"];
             }
         }
         complete(m);
